@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ADD STUDENTS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/add.js" ></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="shortcut icon" href="#">
+	
+</head>
+<style>
+    .mr-5{
+        margin-right: 5px;
+    }
+	button.btn{
+		width: 90px;
+	}
+	.input{
+		background-color :#ffcdd2;
+		border : none;
+		overflow-wrap: break-word;
+	}
+
+</style>
+<body>
+	<div class = "container-fluid" style =""} >
+	<!-- Block left-->
+		<div class="col-sm-2 " style="height: 900px;padding: 50px;">
+            <div>
+              <button class="btn btn-success bg-info" style="padding: 7px 53px; ">Add</button></div>
+            <div style="padding: 5px"></div>
+            <div><input type="button" class="btn btn-primary" style="padding: 7px 30px" value="Display"/></div>
+        </div>
+	<!-- Block right-->
+		<div class = "col-sm-10" style="margin-left:0px;background-color:#ffcdd2">
+			<div  style="margin-left:30px;">
+				<!--Top-->
+				<div class = "rows" style = "margin-top:-20px;" >
+					<h1 style="align-content: center;margin-left: 320px;margin-bottom:50px;margin-top:40px"> <b>Student creation</b></h1>
+									
+				</div>
+				<!-- bottom -->
+				<div class = "rows" style = "" >
+					<div class = "rows" >
+						<table style="margin-left:100px;width:870px" class="table table-bordered">
+								<tr>
+
+									<td style="width:7px" >
+										<label >Class</label></br>
+										<p id="p-b-class"></p>
+										<select  name="class" id="b-class">
+											<option value="" >Class</option>
+											<option th:each="item :${classes}" th:value="${item.id}" th:text="${item.name}">
+										</select></td>
+									<td style="width:50px">
+										<p id="p-b-name"></p>
+										<input class="input" id="b-name" style="width: 170px;height:35px;margin-right:-40px" type="text" placeholder="Fullname…">
+									</td>
+									<td style="width:87px">
+										<p id="p-b-date"></p>
+										<input class="input" id="b-date" style="width: 100px;height:35px;margin-right:-104px" type="text" placeholder="Date of Birth…" >
+									</td>
+									<td style="width:90px">
+										<p id="p-b-sex"></p>
+										<span style="margin-right:5px;" ><b>Sex :</b></span>
+										<input class="input" type="radio" id="r-b-male" name="fav_language" value="CSS">Male</br>
+										
+										<input class="input" style="margin-left:43px;" type="radio" id="r-b-female" name="fav_language" value="CSS">Female</br>
+									</td>
+									<td style="width:85px">
+										<p id="p-b-phone"></p>
+										<input class="input" id="b-phone" style="width: 90px;height:35px;margin-right:-50px" type="text" placeholder="Phone…" >
+									</td>
+									<td style="width:132px"><input class="input" id="b-note" style="width: 155px;height:35px;margin-right:-60px;" size="500" type="text" placeholder="Note…" ></td>
+
+								</tr>
+						</table>
+						<button class="btn btn-success bg-info" style="margin-left: 867px;margin-bottom:20px" onClick="batchInput()">Batch Input</button>
+					</div>
+
+					<div class = "rows">
+						<table class="table table-bordered">
+							<thead>
+							  <tr>
+								
+								<th style="width:20px">
+									 <input id ="checkbox-all" class="form-check-input" type="checkbox" value="">
+								</th>
+								<th style="width:60px">No</th>
+								<th style="width:120px">Class</th>
+								<th style="width:182px">Fullname</th>
+								<th style="width:114px">Date of birth</th>
+								<th style="width:92px">Sex</th>
+								<th style="width:104px">Phone</th>
+								<th style="width:182px">Note</th>
+							  </tr>
+							</thead>
+							<!--Thân bảng-->
+							<tbody>
+								<!--hàng 1-->
+
+							  <tr>
+							  	<th>  <input class="form-check-input" id="1" name="checkbox" type="checkbox" value="" >
+								</th>
+								<th class="scope-row"  scope="row">1</th>
+								<td>
+										<p id="p-class1"></p>
+										<select name="class" id="class1">
+											<option value="" >Class</option>
+											<option th:each="item :${classes}" th:value="${item.id}" th:text="${item.name}">
+										</select>
+								</td>
+
+								<td>
+									<p id="p-name1"></p>
+									<input class="input" id="name1" style="width: 170px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-date1"></p>
+									<input class="input" id="date1" style="width: 100px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-sex1"></p>
+									<input class="input" type="radio" id="r-male1" name="1" value="CSS">Male</br>
+									<input class="input"  type="radio" id="r-female1" name="1" value="CSS">Female
+								</td>
+								<td>
+									<p id="p-phone1"></p>
+									<input class="input" id="phone1" style="width: 90px;height:35px;margin-right:-60px" type="text" >
+								</td>
+								<td>
+									<p id="p-note1"></p>
+									<!--<textarea class="input" id="note1" style="width: 160px;height:35px;margin-right:-60px;" size="500" type="text" wrap="soft"></textarea>-->
+									<input class="input" id="note1" style="width: 160px;height:35px;margin-right:-60px;" size="500" type="text" >
+								</td>
+							  </tr>
+							  <!--hàng 2-->
+							  <tr>
+							  	<th>  <input class="form-check-input" id="2" name="checkbox" type="checkbox" value="" >
+								</th>
+								<th class="scope-row" scope="row">2</th>
+								<td>
+										<p id="p-class2"></p>
+
+										<select name="class" id="class2">
+											<option value="" >Class</option>
+											<option th:each="item :${classes}" th:value="${item.id}" th:text="${item.name}">
+										</select>
+								</td>
+								</td>
+
+								<td>
+									<p id="p-name2"></p>
+									<input class="input" id="name2" style="width: 170px;height:35px;margin-right:-150px" type="text" >
+									
+								</td>
+								<td>
+									<p id="p-date2"></p>
+									<input class="input" id="date2" style="width: 100px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-sex2"></p>
+									<input class="input" type="radio" id="r-male2" name="2" value="CSS">Male</br>
+									<input class="input"  type="radio" id="r-female2" name="2" value="CSS">Female
+								</td>
+								<td>
+									<p id="p-phone2"></p>
+									<input class="input" id="phone2" style="width: 90px;height:35px;margin-right:-60px" type="text" >
+								</td>
+								<td>
+									<p id="p-note2"></p>
+									<input class="input" id="note2" style="width: 160px;height:35px;margin-right:-60px;" size="500" type="text" >
+								</td>
+							  </tr>
+							  <!--hàng 3-->
+							  <tr>
+							  	<th>  <input class="form-check-input" id="3" name="checkbox" type="checkbox" value="" >
+								</th>
+								<th class="scope-row" scope="row">3</th>
+								<td>
+										<p id="p-class3"></p>
+										<select name="class" id="class3">
+											<option value="" >Class</option>
+											<option th:each="item :${classes}" th:value="${item.id}" th:text="${item.name}">
+										</select></td>
+								</td>
+
+								<td>
+									<p id="p-name3"></p>
+									<input class="input" id="name3" style="width: 170px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-date3"></p>
+									<input class="input" id="date3" style="width: 100px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-sex3"></p>
+									<input class="input"  type="radio" id="r-male3" name="3" value="CSS">Male</br>
+									<input class="input"  type="radio" id="r-female3" name="3" value="CSS">Female
+								</td>
+								<td>
+									<p id="p-phone3"></p>
+									<input class="input" id="phone3" style="width: 90px;height:35px;margin-right:-60px" type="text" >
+								</td>
+								<td>
+									<p id="p-note3"></p>
+									<input class="input" id="note3" style="width: 160px;height:35px;margin-right:-60px;" size="500" type="text" >
+								</td>
+							  </tr>
+							  <!--hàng 4-->
+							  <tr>
+							  	<th>  <input class="form-check-input" id="4"  name="checkbox" type="checkbox" value="">
+								</th>
+								<th class="scope-row" scope="row">4</th>
+								<td>
+										<p id="p-class4"></p>
+										<select name="class" id="class4">
+											<option value="" >Class</option>
+											<option th:each="item :${classes}" th:value="${item.id}" th:text="${item.name}">
+										</select></td>
+								</td>
+
+								<td>
+									<p id="p-name4"></p>
+									<input class="input" id="name4" style="width: 170px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-date4"></p>
+									<input class="input" id="date4" style="width: 100px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-sex4"></p>
+									<input class="input"  type="radio" id="r-male4" name="4" value="CSS">Male</br>
+									<input class="input"  type="radio" id="r-female4" name="4" value="CSS">Female
+								</td>
+								<td>
+									<p id="p-phone4"></p>
+									<input class="input" id="phone4" style="width: 90px;height:35px;margin-right:-60px" type="text" >
+								</td>
+								<td>
+									<p id="p-note4"></p>
+									<input class="input" id="note4" style="width: 160px;height:35px;margin-right:-60px;" size="500" type="text" >
+								</td>
+							  </tr>
+							  <!--hàng 5-->
+							  <tr>
+							  	<th>  <input class="form-check-input" id="5" name="checkbox" type="checkbox" value="" >
+								</th>
+								<th class="scope-row" scope="row">5</th>
+								<td>
+										<p id="p-class5"></p>
+										<select name="class" id="class5">
+											<option value="" >Class</option>
+											<option th:each="item :${classes}" th:value="${item.id}" th:text="${item.name}">
+										</select></td>
+								</td>
+
+								<td>
+									<p id="p-name5"></p>
+									<input class="input" id="name5" style="width: 170px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-date5"></p>
+									<input class="input" id="date5" style="width: 100px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-sex5"></p>
+									<input class="input"  type="radio" id="r-male5" name="5" value="CSS">Male</br>
+									<input class="input"  type="radio" id="r-female5" name="5" value="CSS">Female
+								</td>
+								<td>
+									<p id="p-phone5"></p>
+									<input class="input" id="phone5" style="width: 90px;height:35px;margin-right:-60px" type="text" >
+								</td>
+								<td>
+									<p id="p-note5"></p>
+									<input class="input" id="note5" style="width: 160px;height:35px;margin-right:-60px;" size="500" type="text" >
+								</td>
+							  </tr>
+							  <!--hàng 6-->
+							  <tr>
+							  	<th>  <input class="form-check-input" id="6" name="checkbox" type="checkbox" value="" >
+								</th>
+								<th class="scope-row" scope="row">6</th>
+								<td>
+										<p id="p-class6"></p>
+										<select name="class" id="class6">
+											<option value="" >Class</option>
+											<option th:each="item :${classes}" th:value="${item.id}" th:text="${item.name}">
+										</select></td>
+								</td>
+
+								<td>
+									<p id="p-name6"></p>
+									<input class="input" id="name6" style="width: 170px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-date6"></p>
+									<input class="input" id="date6" style="width: 100px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-sex6"></p>
+									<input class="input"  type="radio" id="r-male6" name="6" value="CSS">Male</br>
+									<input class="input"  type="radio" id="r-female6" name="6" value="CSS">Female
+								</td>
+								<td>
+									<p id="p-phone6"></p>
+									<input class="input" id="phone6" style="width: 90px;height:35px;margin-right:-60px" type="text" >
+								</td>
+								<td>
+									<p id="p-note6"></p>
+									<input class="input" id="note6" style="width: 160px;height:35px;margin-right:-60px;" size="500" type="text" >
+								</td>
+							  </tr>
+							  <!--hàng 7-->
+							  <tr>
+							  	<th>  <input class="form-check-input" id="7" name="checkbox" type="checkbox" value="" >
+								</th>
+								<th class="scope-row" scope="row">7</th>
+								<td>
+										<p id="p-class7"></p>
+										<select name="class" id="class7">
+											<option value="" >Class</option>
+											<option th:each="item :${classes}" th:value="${item.id}" th:text="${item.name}">
+										</select></td>
+								
+								<td>
+									<p id="p-name7"></p>
+									<input class="input" id="name7" style="width: 170px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-date7"></p>
+									<input class="input" id="date7" style="width: 100px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-sex7"></p>
+									<input class="input"  type="radio" id="r-male7" name="7" value="CSS">Male</br>
+									<input class="input"  type="radio" id="r-female7" name="7" value="CSS">Female
+								</td>
+								<td>
+									<p id="p-phone7"></p>
+									<input class="input" id="phone7" style="width: 90px;height:35px;margin-right:-60px" type="text" >
+								</td>
+								<td>
+									<p id="p-note7"></p>
+									<input class="input" id="note7" style="width: 160px;height:35px;margin-right:-60px;" size="500" type="text" >
+								</td>
+							  </tr>
+							  <!--hàng 8-->
+							  <tr>
+							  	<th>  <input class="form-check-input" id="8" name="checkbox" type="checkbox" value="">
+								</th>
+								<th class="scope-row" scope="row">8</th>
+								<td>
+										<p id="p-class8"></p>
+										<select name="class" id="class8">
+											<option value="" >Class</option>
+											<option th:each="item :${classes}" th:value="${item.id}" th:text="${item.name}">
+										</select></td>
+								</td>
+
+								<td>
+									<p id="p-name8"></p>
+									<input class="input" id="name8" style="width: 170px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-date8"></p>
+									<input class="input" id="date8" style="width: 100px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-sex8"></p>
+									<input class="input"  type="radio" id="r-male8" name="8" value="CSS">Male</br>
+									<input class="input"  type="radio" id="r-female8" name="8" value="CSS">Female
+								</td>
+								<td>
+									<p id="p-phone8"></p>
+									<input class="input" id="phone8" style="width: 90px;height:35px;margin-right:-60px" type="text" >
+								</td>
+								<td>
+									<p id="p-note8"></p>
+									<input class="input" id="note8" style="width: 160px;height:35px;margin-right:-60px;" size="500" type="text" >
+								</td>
+							  </tr>
+							  <!--hàng 9-->
+							  <tr>
+							  	<th>  <input class="form-check-input" id="9" name="checkbox" type="checkbox" value="" >
+								</th>
+								<th class="scope-row" scope="row">9</th>
+								<td>
+										<p id="p-class9"></p>
+										<select name="class" id="class9">
+											<option value="" >Class</option>
+											<option th:each="item :${classes}" th:value="${item.id}" th:text="${item.name}">
+										</select>
+								</td>
+
+								<td>
+									<p id="p-name9"></p>
+									<input class="input" id="name9" style="width: 170px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-date9"></p>
+									<input class="input" id="date9" style="width: 100px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-sex9"></p>
+									<input class="input"  type="radio" id="r-male9" name="9" value="CSS">Male</br>
+									<input class="input"  type="radio" id="r-female9" name="9" value="CSS">Female
+								</td>
+								<td>
+									<p id="p-phone9"></p>
+									<input class="input" id="phone9" style="width: 90px;height:35px;margin-right:-60px" type="text" >
+								</td>
+								<td>
+									<p id="p-note9"></p>
+									<input class="input" id="note9" style="width: 160px;height:35px;margin-right:-60px;" size="500" type="text" >
+								</td>
+							  </tr>
+							  <!--hàng 10-->
+							  <tr>
+							  	<th>  <input class="form-check-input" id="10" name="checkbox" type="checkbox" value="" >
+								</th>
+								<th class="scope-row" scope="row">10</th>
+								<td>
+										<p id="p-class10"></p>
+										<select name="class" id="class10">
+											<option value="" >Class</option>
+											<option th:each="item :${classes}" th:value="${item.id}" th:text="${item.name}">
+										</select></td>
+								</td>
+
+								<td>
+									<p id="p-name10"></p>
+									<input class="input" id="name10" style="width: 170px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-date10"></p>
+									<input class="input" id="date10" style="width: 100px;height:35px;margin-right:-150px" type="text" >
+								</td>
+								<td>
+									<p id="p-sex10"></p>
+									<input class="input"  type="radio" id="r-male10" name="10" value="CSS">Male</br>
+									<input class="input"  type="radio" id="r-female10" name="10" value="CSS">Female
+								</td>
+								<td>
+									<p id="p-phone10"></p>
+									<input class="input" id="phone10" style="width: 90px;height:35px;margin-right:-60px" type="text" >
+									</td>
+								<td>
+									<p id="p-note10"></p>
+									<input class="input" id="note10" style="width: 160px;height:35px;margin-right:-60px;" size="500" type="text" >
+								</td>
+							  </tr>
+
+
+
+							</tbody>
+					</table>
+				</div>	
+				<div style="padding: 10px">
+                    <button class="btn btn-danger" style="margin-left: 650px;float: left;padding: 7px 30px " onClick="deleteRow()">Delete</button>
+                    <button class="btn btn-success" style="margin-left: 15px;padding: 7px 30px" onClick="register()">Register</button>
+                </div>
+
+				</div>
+		</div>
+	</div>
+	</div>
+<script>
+	$("#checkbox-all").click(function() {
+  $("input[type=checkbox]").prop("checked", $(this).prop("checked"));
+});
+
+$("input[type=checkbox]").click(function() {
+  if (!$(this).prop("checked")) {
+    $("#checkbox-all").prop("checked", false);
+  }
+});
+
+
+</script>
+	
+</body>
+	
